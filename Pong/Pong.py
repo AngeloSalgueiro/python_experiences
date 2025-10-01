@@ -65,11 +65,11 @@ while running:
     if bot.box.collidepoint(boule.position[0], boule.position[1]-boule.size):
         boule.position[1] = bot.box.bottom + boule.size
         boule.velocity[1] *= -1
-        boule.velocity[0] += player.get_velocity()[0]
+        boule.velocity[0] += bot.get_velocity()[0]
         boule.velocity[0] = max(-20,boule.velocity[0])
         boule.velocity[0] = min(20,boule.velocity[0])
 
-    # Player bzr control
+    # Player control
     if pygame.mouse.get_pressed()[0]:
         player.box.center = (list(pygame.mouse.get_pos())[0], player.box.center[1])
         if len(player.positions) == 2:
@@ -77,6 +77,7 @@ while running:
         else :
             player.positions.append(player.box.center)
     
+    # Bot control
     if bot.box.center[0] < boule.position[0]:
         bot.box.center = (bot.box.center[0]+10, bot.box.center[1])
 
